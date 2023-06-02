@@ -1,4 +1,4 @@
-let recipesData = [
+let recipeData = [
   {
       "id": 595736,
       "image": "https://spoonacular.com/recipeImages/595736-556x370.jpg",
@@ -5381,4 +5381,10 @@ let recipesData = [
       ]
   }
 ]
+
+const recipesData = recipeData.map(recipe => {
+    recipe.hits = 0;
+    return recipe;
+})
+
 module.exports = recipesData;
