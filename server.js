@@ -60,6 +60,30 @@ app.post('/api/v1/usersRecipes', (req, res) => {
   });
 });
 
+app.patch('/api/v1/recipeHits', (req, res) => {
+  const { recipeID } = req.body;
+ 
+  if (req.body.recipeID === undefined) {
+    return res.status(422).json({
+      message: `You are missing a required parameter of ${recipeID}`
+    });
+  }
+
+  const foundRecipe = recipes.find(recipe => recipe.id === recipeID);
+
+  if (!foundRecipe) {
+    return res.status(422).json({
+      message: `No recipe found with ID ${recipeID}`
+    });
+  }
+
+  foundRecipe.hits += 1;
+
+  return res.status(201).json({
+    message: `Success. Recipe #${recipeID}'s hits has been incremented.`
+  });
+});
+
 app.delete('/api/v1/usersRecipes', (req, res) => {
   const { userID, recipeID } = req.body;
 
