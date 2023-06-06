@@ -5,6 +5,7 @@ const app = express();
 const users = require('./data/users');
 const recipes = require('./data/recipes');
 const ingredients = require('./data/ingredients');
+const host = '0.0.0.0'
 
 app.locals = {
   title: 'What\'s Cookin API',
@@ -112,6 +113,6 @@ app.delete('/api/v1/usersRecipes', (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`${app.locals.title} is now running on http://localhost:${port} !`)
+app.listen(port, host, () => {
+  console.log(`${app.locals.title} is now running on http://${host}:${port} !`)
 });
