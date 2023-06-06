@@ -1,1 +1,1 @@
-web: node server.js --bind :$PORT
+web:node server.js --bind :$PORT
